@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "An architectural project in the portfolio.",
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string", "description": "URL-friendly identifier" },
+        "title": { "type": "string", "description": "Project title" },
+        "type": { "type": "string", "description": "Residential or Commercial" },
+        "tools": { "type": "string", "description": "Tools used (e.g. Revit, Enscape)" },
+        "location": { "type": "string", "description": "Project location" },
+        "image": { "type": "string", "description": "Main project image URL" },
+        "description": { "type": "string", "description": "Detailed project description" },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string" },
+              "value": { "type": "string" }
+            }
+          }
+        },
+        "gallery": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["slug", "title", "type", "image", "description"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Collection of architectural projects."
+    }
+  }
+}
