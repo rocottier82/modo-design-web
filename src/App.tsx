@@ -5,7 +5,7 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { ServicesGrid } from './components/ServicesGrid';
 import { Portfolio } from './components/Portfolio';
-import { Testimonials } from './components/Testimonials';
+import { OurClients } from './components/OurClients';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ProjectDetail } from './pages/ProjectDetail';
@@ -17,7 +17,7 @@ const Home = () => (
     <About />
     <ServicesGrid />
     <Portfolio />
-    <Testimonials />
+    <OurClients />
     <Contact />
   </>
 );

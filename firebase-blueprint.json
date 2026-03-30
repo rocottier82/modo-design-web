@@ -29,12 +29,27 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["slug", "title", "type", "image", "description"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "A client or partner logo for the carousel.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Client name" },
+        "logo": { "type": "string", "description": "Client logo URL" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "logo"]
     }
   },
   "firestore": {
     "/projects/{projectId}": {
       "schema": "Project",
       "description": "Collection of architectural projects."
+    },
+    "/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Collection of client logos."
     }
   }
 }

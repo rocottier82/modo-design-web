@@ -18,6 +18,13 @@ service cloud.firestore {
     //   - gallery: list of strings
     //   - createdAt: timestamp
     // ===============================================================
+    // Collection: clients
+    // Document ID: auto-generated
+    // Fields:
+    //   - name: string (required)
+    //   - logo: string (required)
+    //   - createdAt: timestamp
+    // ===============================================================
 
     // Helper Functions
     function isAuthenticated() {
@@ -38,9 +45,20 @@ service cloud.firestore {
              data.description is string;
     }
 
+    function isValidClient(data) {
+      return data.keys().hasAll(['name', 'logo']) &&
+             data.name is string && data.name.size() > 0 &&
+             data.logo is string && data.logo.size() > 0;
+    }
+
     match /projects/{projectId} {
       allow read: if true; // Publicly readable portfolio
       allow create, update, delete: if isAdmin() && isValidProject(request.resource.data);
+    }
+
+    match /clients/{clientId} {
+      allow read: if true; // Publicly readable clients
+      allow create, update, delete: if isAdmin() && isValidClient(request.resource.data);
     }
   }
 }
